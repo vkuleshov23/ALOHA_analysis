@@ -5,17 +5,16 @@ import smo.util.Consts;
 import smo.util.Poisson;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class User {
 
     @Getter
-    private final Poisson p;
-    private final LinkedList<Double> messages = new LinkedList<>();
+    protected final Poisson p;
+    protected final LinkedList<Double> messages = new LinkedList<>();
 
-    private final LinkedList<Integer> n = new LinkedList<>();
+    protected final LinkedList<Integer> n = new LinkedList<>();
 
-    private final LinkedList<Double> d = new LinkedList<>();
+    protected final LinkedList<Double> d = new LinkedList<>();
 
     public User(double lambda) {
         this.p = new Poisson(lambda);
