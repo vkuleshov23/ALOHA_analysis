@@ -2,7 +2,7 @@ package smo.util;
 
 public class Consts {
 
-    public static final int m = 100;
+    public static final int m = 2;
 
     public static final double p = 1/(double)m;
 
