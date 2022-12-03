@@ -44,7 +44,7 @@ public class ModelSystem {
         }
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void model() {
         this.create();
         List<ModelingTask> tasks = getTasks();
@@ -53,6 +53,12 @@ public class ModelSystem {
         tasks2.forEach(ModelingTask2::run);
         tasks.forEach(task -> {try {task.join();} catch (Exception ignored) {}});
         tasks2.forEach(task2 -> {try {task2.join();} catch (Exception ignored) {}});
+
+//        List<Double> graphic = new ArrayList<>();
+//        for(int i = 0; i < tasks.size(); i++) {
+//            double res = tasks.get(i).D() / tasks2.get(i).D();
+//            graphic.add(Double.isNaN(res) ? 0.0 : res);
+//        }
 
         plotter.plot(lambdas,
                 tasks.stream().map(ModelingTask::D).collect(Collectors.toList()),
@@ -68,6 +74,8 @@ public class ModelSystem {
                 tasks.stream().map(ModelingTask::lambda).collect(Collectors.toList()),
                 tasks2.stream().map(ModelingTask2::lambda).collect(Collectors.toList()),
                 "Lambda", "Lambda(out)","A", "B");
+
+//        plotter.plot(lambdas, graphic, "dalayA/delay2", "");
     }
 
     private List<ModelingTask> getTasks() {
